@@ -6,7 +6,7 @@ A Python utility module for planar near-field (PNF) antenna measurement calculat
 
 ## Requirements
 
-- Python 3.6+
+- Python 3.8+
 - No third-party dependencies (uses the standard library `math` module only)
 
 ---
