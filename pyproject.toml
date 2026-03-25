@@ -1,5 +1,5 @@
 [project]
-name = "AntennaPNF"
+name = "antenna-pnf"
 version = "0.1.0"
 description = "Planar Near-Field Antenna Measurement Functions"
 authors = [
@@ -9,6 +9,9 @@ dependencies = []
 requires-python = ">=3.13"
 readme = "README.md"
 license = {text = "MIT"}
+
+[project.scripts]
+antenna_pnf = "antenna_pnf.__main__:app"
 
 [project.optional-dependencies]
 dev = [

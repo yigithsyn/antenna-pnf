@@ -3,28 +3,28 @@ import pytest
 # setting path
 sys.path.append('./src/')
 
-from antennapnf import AntennaPNF
+import antenna_pnf as pnf
 
-def test_seperationDistance():
+def test_separation_distance():
     frequency = 10E9
     coeff = 10
 
     print()
-    assert round(AntennaPNF.seperationDistance(frequency, coeff),3) == pytest.approx(0.3)
-    print(f"- Seperation distance at {frequency/1E6}MHz is {AntennaPNF.seperationDistance(frequency,coeff):.3f} meters with coefficient={coeff}")
+    assert round(pnf.separation_distance(frequency, coeff),3) == pytest.approx(0.3)
+    print(f"- separation distance at {frequency/1E6}MHz is {pnf.separation_distance(frequency,coeff):.3f}m with coefficient={coeff}")
 
 
-def test_minSeperationDistance():
+def test_min_separation_distance():
     frequency = 3E9
 
     print()
-    assert round(AntennaPNF.minSeperationDistance(frequency),3) == pytest.approx(0.5)
-    print(f"- Minimum seperation distance at {frequency/1E6}MHz is {AntennaPNF.minSeperationDistance(frequency):.3f} meters")
-    assert round(AntennaPNF.minSeperationDistance(frequency, True),3) == pytest.approx(0.3)
-    print(f"- Minimum seperation distance at {frequency/1E6}MHz is {AntennaPNF.minSeperationDistance(frequency, True):.3f} meters (3 lambda crtieria)")
+    assert round(pnf.min_separation_distance(frequency),3) == pytest.approx(0.5)
+    print(f"- Minimum separation distance at {frequency/1E6}MHz is {pnf.min_separation_distance(frequency):.3f}m")
+    assert round(pnf.min_separation_distance(frequency, True),3) == pytest.approx(0.3)
+    print(f"- Minimum separation distance at {frequency/1E6}MHz is {pnf.min_separation_distance(frequency, True):.3f}m (3 lambda crtieria)")
 
 
-def test_angleOfView():
+def test_angle_of_view():
     a = 0.15
     d = 0.05
     L = 1.00
@@ -32,19 +32,19 @@ def test_angleOfView():
     result = 83.290
 
     print()
-    assert round(AntennaPNF.angleOfView(a,d,L),3) == pytest.approx(result)
-    print(f"- Angle of view (d={a}, d={d}, L={L}) is {AntennaPNF.angleOfView(a,d,L):.3f}")
+    assert round(pnf.angle_of_view(a,d,L),3) == pytest.approx(result)
+    print(f"- Angle of view (d={a}m, d={d}m, L={L}m) is {pnf.angle_of_view(a,d,L):.3f}°")
 
-def test_samplingSpacing():
+def test_sampling_spacing():
     freq = 5E9
 
     result = 0.030
 
     print()
-    assert round(AntennaPNF.samplingSpacing(freq),3) == pytest.approx(result)
-    print(f"- Sampling spacing (frequency={freq/1e6}MHz) is {AntennaPNF.samplingSpacing(freq):.3f}")
+    assert round(pnf.sampling_spacing(freq),3) == pytest.approx(result)
+    print(f"- Sampling spacing (frequency={freq/1e6}MHz) is {pnf.sampling_spacing(freq):.3f}m")
 
-def test_scanLength():
+def test_scan_length():
     a = 0.15
     d = 0.05
     theta = 83.290
@@ -52,7 +52,7 @@ def test_scanLength():
     result = 1.000
 
     print()
-    assert round(AntennaPNF.scanLength(a,d,theta),3) == pytest.approx(result)
-    print(f"- Scan length (d={a}, d={d}, theta={theta}) is {AntennaPNF.scanLength(a,d,theta):.3f}")
+    assert round(pnf.scan_length(a,d,theta),3) == pytest.approx(result)
+    print(f"- Scan length (d={a}m, d={d}m, theta={theta}°) is {pnf.scan_length(a,d,theta):.3f}m")
 
 
